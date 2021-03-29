@@ -1,0 +1,34 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Flag</th>
+      <th>Name</th>
+      <th>Capital</th>
+      <th>Population</th>
+      <th>View</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let country of countries; index as i">
+      <td>{{ i }}</td>
+      <td>
+        <img
+          [src]="country.flag"
+          alt="{{ country.name }} flag"
+          class="small-flag"
+        />
+      </td>
+      <td>{{ country.name }}</td>
+      <td>{{ country.capital }}</td>
+      <!-- 
+          Se utiliza el pipe number para formatear el valor
+          y se imprima con ","
+        -->
+      <td>{{ country.population | number }}</td>
+      <td>
+        <a [routerLink]="['/country', country.alpha2Code]">view...</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
