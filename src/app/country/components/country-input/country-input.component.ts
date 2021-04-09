@@ -17,7 +17,7 @@ export class CountryInputComponent implements OnInit {
 
   ngOnInit(): void {
     //El pipe intercepta el llamado al subscribe, y asi evita que
-    //el evento subscribe se omita hasta pasados 300 mililisegundos
+    //el evento subscribe se emita hasta pasados 300 mililisegundos
     this.debouncer
       .pipe(debounceTime(300))
       .subscribe((value) => this.onDebounce.emit(value));

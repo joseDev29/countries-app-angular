@@ -1,1 +1,42 @@
-<p>by-region works!</p>
+<h2>Search by region</h2>
+<hr />
+
+<h5>Select region</h5>
+
+<div class="row mt-4">
+  <div class="col">
+    <!-- Forma 1: Clases condicionales -->
+    <!--  [class.btn-primary]="region === activeRegion" -->
+
+    <!-- Forma 2: Clases condicionales -->
+    <!-- 
+        [ngClass]="{
+        'btn-primary': activeRegion === region,
+        'btn-outline-primary': activeRegion !== region
+      }" 
+    -->
+
+    <!-- Forma 3: Clases condicionales  -->
+    <!-- 
+        [class]="
+        region === activeRegion ? 'btn btn-primary' : 'btn btn-outline-primary'
+      " 
+    -->
+
+    <button
+      *ngFor="let region of regions"
+      (click)="searchRegion(region)"
+      [class]="getCSSClass(region)"
+    >
+      {{ region | titlecase }}
+    </button>
+  </div>
+</div>
+
+<h3 class="mt-4">{{ activeRegion | titlecase }}</h3>
+
+<div class="row mt-2" *ngIf="countries.length">
+  <div class="col">
+    <app-countries-table [countries]="countries"></app-countries-table>
+  </div>
+</div>

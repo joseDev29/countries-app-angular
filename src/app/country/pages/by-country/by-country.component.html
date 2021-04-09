@@ -1,4 +1,4 @@
-<h2>By Country</h2>
+<h2>Search by Country</h2>
 <hr />
 
 <div class="row">
@@ -10,6 +10,23 @@
     ></app-country-input>
   </div>
 </div>
+
+<ul class="list-group" *ngIf="viewSuggestions">
+  <li
+    class="list-group-item list-group-item-action"
+    *ngFor="let country of suggestionsCountries"
+  >
+    <a class="nav-link" [routerLink]="['/country', country.alpha2Code]">
+      {{ country.name | titlecase }}
+    </a>
+  </li>
+  <li
+    class="list-group-item list-group-item-action"
+    (onClick)="searchSuggestion(query)"
+  >
+    <a class="nav-link"> Search "{{ query }}" </a>
+  </li>
+</ul>
 
 <hr />
 
